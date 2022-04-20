@@ -54,9 +54,10 @@
         for(let voice of synth.getVoices()){
             if(voice.name === voicelist.value){
                 utterance.voice = voice;
-                synth.speak(utterance);
+               
             }
         }
+        synth.speak(utterance);
         
     }
     function speek(){

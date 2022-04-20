@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <!-- icon------------- -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="text-form">
+            <h2>Text To Speech</h2>
+            <div class="text-field">
+                <h4>Enter Text</h4>
+                <textarea name="" id="" cols="" rows=""></textarea>
+            </div>
+            <div class="convert-area">
+                <h4>Select Voice</h4>
+                <select name="" id="">
+                    <!-- <option value="">Google US English Female</option>
+                    <option value="">Google US English male</option>
+                    <option value="">Google Hindi Voice</option> -->
+                </select>
+            </div>
+            <button onclick="speek()">Convert To Speech</button>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    const voicelist = document.querySelector('select');
+    let synth = speechSynthesis;
+    function voices(){
+        for(let voice of synth.getVoices()){
+           // console.log(voice);
+           //let selected = "Microsoft David - English (United States)";
+            let option = ` <option value='${voice.name}'>${voice.name}  (${voice.lang})</option>`;
+            voicelist.insertAdjacentHTML("beforeend",option);
+        }
+    }
+    synth.addEventListener("voiceschanged",voices);
+
+    function speech(text){
+        let utterance = new SpeechSynthesisUtterance(text);
+        for(voice of synth.getVoices()){
+            if(voice.name === voicelist.value){
+                utterance.voice = voice;
+            }
+        }
+        speechSynthesis.speak(utterance);
+    }
+    function speek(){
+        textarea = document.querySelector('textarea');
+        if(textarea.value != ""){
+           
+            speech(textarea.value);
+        }
+    }
+</script>
+</html>

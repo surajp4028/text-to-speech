@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    
+}
+.container .text-form{
+    background: rgba(255, 255, 255, 0.564);
+    backdrop-filter: blur(8px);
+    padding: 25px 30px;
+    width: 400px;
+}
+.container .text-form h2{
+    font-size: 26px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.container .text-form h4{
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.container .text-form .text-field{
+    display: flex;
+    flex-direction: column;
+}
+.text-field textarea{
+    height: 100px;
+    background: transparent;
+    margin-bottom: 20px;
+}
+.text-form select{
+    width: 100%;
+    padding: 5px 8px;
+    outline: none;
+    border: none;
+    background-color: rgba(225, 225, 225, 0.521);
+    backdrop-filter: blur(8px);
+    margin-bottom: 15px;
+}
+.text-form button{
+    width: 100%;
+    padding: 8px 12px;
+    background: rgb(7, 94, 180);
+    border: none;
+    color: white;
+    font-size: 16px;
+}
+.text-form button:hover{
+    box-shadow: 1px 1px 5px rgb(2, 59, 117);
+    transition: all 0.3s ease-out;
+}
+@media (max-width: 909px){
+    .container .text-form{
+        width: 340px;
+    }
+}

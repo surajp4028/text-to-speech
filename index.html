@@ -34,14 +34,18 @@
 <script type="text/javascript">
     var voicelist = document.querySelector('select');
     let synth = speechSynthesis;
+
+    synth.addEventListener("voiceschanged",voices);
+
     function voices(){
         for(let voice of synth.getVoices()){
-         
-            let option =`<option value="${voice.name}">${voice.name} (${voice.lang})</option>`;
+           // console.log(voice);
+           //let selected = "Microsoft David - English (United States)";
+           var option =`<option value="${voice.name}">${voice.name} (${voice.lang})</option>`;
             voicelist.insertAdjacentHTML("beforeend",option);
         }
     }
-    synth.addEventListener("voiceschanged",voices);
+  
 
     function speech(text){
         let utterance = new SpeechSynthesisUtterance(text);
@@ -51,16 +55,16 @@
                 utterance.voice = voice;
             }
         }
-        speechSynthesis.speak(utterance);
+        synth.speak(utterance);
     }
     function speek(event){
-        
-        textarea = document.querySelector('textarea');
-        if(textarea.value != ""){
+       
+        var textarea = document.querySelector('textarea');
+        if(textarea.value !== ""){
            
             speech(textarea.value);
         }
-       event.preventDefault();
+        event.preventDefault();
     }
 </script>
 </html>

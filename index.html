@@ -36,9 +36,8 @@
     let synth = speechSynthesis;
     function voices(){
         for(let voice of synth.getVoices()){
-           // console.log(voice);
-           //let selected = "Microsoft David - English (United States)";
-            let option =`<option value='${voice.name}'>${voice.name} (${voice.lang})</option>`;
+         
+            let option =`<option value="${voice.name}">${voice.name} (${voice.lang})</option>`;
             voicelist.insertAdjacentHTML("beforeend",option);
         }
     }
@@ -46,7 +45,7 @@
 
     function speech(text){
         let utterance = new SpeechSynthesisUtterance(text);
-        //voicelist = document.querySelector('select');
+        voicelist = document.querySelector('select');
         for(let voice of synth.getVoices()){
             if(voice.name === voicelist.value){
                 utterance.voice = voice;

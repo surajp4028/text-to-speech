@@ -55,12 +55,13 @@
         speechSynthesis.speak(utterance);
     }
     function speek(event){
+         event.preventDefault();
         textarea = document.querySelector('textarea');
         if(textarea.value != ""){
            
             speech(textarea.value);
         }
-        event.preventDefault();
+      
     }
 </script>
 </html>

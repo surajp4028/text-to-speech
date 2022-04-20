@@ -32,13 +32,13 @@
     </div>
 </body>
 <script type="text/javascript">
-    const voicelist = document.querySelector('select');
+    var voicelist = document.querySelector('select');
     let synth = speechSynthesis;
     function voices(){
         for(let voice of synth.getVoices()){
            // console.log(voice);
            //let selected = "Microsoft David - English (United States)";
-            let option = ` <option value='${voice.name}'>${voice.name}  (${voice.lang})</option>`;
+            let option =`<option value='${voice.name}'>${voice.name} (${voice.lang})</option>`;
             voicelist.insertAdjacentHTML("beforeend",option);
         }
     }
@@ -46,19 +46,21 @@
 
     function speech(text){
         let utterance = new SpeechSynthesisUtterance(text);
-        for(voice of synth.getVoices()){
+        //voicelist = document.querySelector('select');
+        for(let voice of synth.getVoices()){
             if(voice.name === voicelist.value){
                 utterance.voice = voice;
             }
         }
         speechSynthesis.speak(utterance);
     }
-    function speek(){
+    function speek(event){
         textarea = document.querySelector('textarea');
         if(textarea.value != ""){
            
             speech(textarea.value);
         }
+        event.preventDefault();
     }
 </script>
 </html>
